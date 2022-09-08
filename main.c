@@ -34,7 +34,7 @@ void monty(args_t *args)
 		get = getline(&(data.line), &len, data.fptr);
 		if (get < 0)
 			break;
-		data.words = strtow(data.line);
+		data.words = split_str(data.line);
 		if (data.words[0] == NULL || data.words[0][0] == '#')
 		{
 			free_all(0);
