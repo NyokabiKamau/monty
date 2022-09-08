@@ -124,7 +124,7 @@ void queue_op(stack_t **stack, unsigned int line_number);
 void pchar_op(stack_t **stack, unsigned int line_number);
 void pstr_op(stack_t **stack, unsigned int line_number);
 
-/* strtow.c */
+/* split_str.c */
 int count_word(char *s);
 char **split_str(char *str);
 void free_array_str(char **args);
