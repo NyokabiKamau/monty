@@ -34,13 +34,13 @@ void monty(args_t *args)
 		get = getline(&(data.line), &len, data.fptr);
 		if (get < 0)
 			break;
-		data.words = split_str(data.line);
+		data.words = strtow(data.line);
 		if (data.words[0] == NULL || data.words[0][0] == '#')
 		{
 			free_all(0);
 			continue;
 		}
-		code_func = get_functions(data.words);
+		code_func = get_func(data.words);
 		if (!code_func)
 		{
 			dprintf(STDERR_FILENO, UNKNOWN, args->line_number, data.words[0]);

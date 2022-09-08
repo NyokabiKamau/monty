@@ -2,11 +2,11 @@
 #include "lists.h"
 
 /**
- * pint_op - handles the pint instruction
+ * pint_handler - handles the pint instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void pint_op(stack_t **stack, unsigned int line_number)
+void pint_handler(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
 
@@ -21,11 +21,11 @@ void pint_op(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pop_op - handles the pop instruction
+ * pop_handler - handles the pop instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void pop_op(stack_t **stack, unsigned int line_number)
+void pop_handler(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
@@ -36,30 +36,30 @@ void pop_op(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	delete_d_node_index(stack, 0);
+	delete_dnodeint_at_index(stack, 0);
 }
 
 /**
- * swap_op - handles the swap instruction
+ * swap_handler - handles the swap instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void swap_op(stack_t **stack, unsigned int line_number)
+void swap_handler(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack, *node = NULL;
 	int num;
 
-	if (d_linked_len(*stack) < 2)
+	if (dlistint_len(*stack) < 2)
 	{
 		dprintf(STDERR_FILENO, SWAP_FAIL, line_number);
 		free_all(1);
 		exit(EXIT_FAILURE);
 	}
 
-	temp = get_d_node_index(*stack, 0);
+	temp = get_dnodeint_at_index(*stack, 0);
 	num = temp->n;
-	delete_d_node_index(stack, 0);
-	node = insert_d_node_index(stack, 1, num);
+	delete_dnodeint_at_index(stack, 0);
+	node = insert_dnodeint_at_index(stack, 1, num);
 	if (!node)
 	{
 		dprintf(STDERR_FILENO, MALLOC_FAIL);
@@ -69,18 +69,18 @@ void swap_op(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * add_op - handles the add instruction
+ * add_handler - handles the add instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void add_op(stack_t **stack, unsigned int line_number)
+void add_handler(stack_t **stack, unsigned int line_number)
 {
 	int sum = 0;
 	stack_t *node = NULL;
-	stack_t *node_0 = get_d_node_index(*stack, 0);
-	stack_t *node_1 = get_d_node_index(*stack, 1);
+	stack_t *node_0 = get_dnodeint_at_index(*stack, 0);
+	stack_t *node_1 = get_dnodeint_at_index(*stack, 1);
 
-	if (d_linked_len(*stack) < 2)
+	if (dlistint_len(*stack) < 2)
 	{
 		dprintf(STDERR_FILENO, ADD_FAIL, line_number);
 		free_all(1);
@@ -88,9 +88,9 @@ void add_op(stack_t **stack, unsigned int line_number)
 	}
 
 	sum = node_0->n + node_1->n;
-	delete_d_node_index(stack, 0);
-	delete_d_node_index(stack, 0);
-	node = add_d_node(stack, sum);
+	delete_dnodeint_at_index(stack, 0);
+	delete_dnodeint_at_index(stack, 0);
+	node = add_dnodeint(stack, sum);
 	if (!node)
 	{
 		dprintf(STDERR_FILENO, MALLOC_FAIL);
@@ -100,11 +100,11 @@ void add_op(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * nop_op - handles the nop instruction
+ * nop_handler - handles the nop instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void nop_op(stack_t **stack, unsigned int line_number)
+void nop_handler(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;

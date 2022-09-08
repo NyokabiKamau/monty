@@ -2,30 +2,30 @@
 #include "lists.h"
 
 /**
- * insert_d_node_index - inserts a node at a given index
+ * insert_dnodeint_at_index - inserts a node at a given index
  * in a doubly linked list
  * @h: double pointer to the list
- * @index: index of the node to insert
+ * @idx: index of the node to insert
  * @n: data to insert
  *
  * Return: address of the new node, or NULL if it failed
  */
-d_linked_t *insert_d_node_index(d_linked_t **h, unsigned int index, int n)
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	unsigned int i;
-	d_linked_t *new;
-	d_linked_t *temp = *h;
+	dlistint_t *new;
+	dlistint_t *temp = *h;
 
-	if (index == 0)
-		return (add_d_node(h, n));
+	if (idx == 0)
+		return (add_dnodeint(h, n));
 
-	for (i = 0; temp && i < index; i++)
+	for (i = 0; temp && i < idx; i++)
 	{
-		if (i == index - 1)
+		if (i == idx - 1)
 		{
 			if (temp->next == NULL)
-				return (add_d_node_end(h, n));
-			new = malloc(sizeof(d_linked_t));
+				return (add_dnodeint_end(h, n));
+			new = malloc(sizeof(dlistint_t));
 			if (!new || !h)
 				return (NULL);
 			new->n = n;
@@ -44,21 +44,21 @@ d_linked_t *insert_d_node_index(d_linked_t **h, unsigned int index, int n)
 }
 
 /**
- * add_d_node_end - adds a new node at the end of a doubly linked list
+ * add_dnodeint_end - adds a new node at the end of a doubly linked list
  * @head: double pointer to the list
  * @n: data to insert in the new node
  *
  * Return: the address of the new element, or NULL if it failed
  */
-d_linked_t *add_d_node_end(d_linked_t **head, const int n)
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
-	d_linked_t *new;
-	d_linked_t *temp = *head;
+	dlistint_t *new;
+	dlistint_t *temp = *head;
 
 	if (!head)
 		return (NULL);
 
-	new = malloc(sizeof(d_linked_t));
+	new = malloc(sizeof(dlistint_t));
 	if (!new)
 		return (NULL);
 
@@ -82,12 +82,12 @@ d_linked_t *add_d_node_end(d_linked_t **head, const int n)
 }
 
 /**
- * free_d_linked - frees a doubly linked list
+ * free_dlistint - frees a doubly linked list
  * @head: pointer to the list to free
  */
-void free_d_linked(d_linked_t *head)
+void free_dlistint(dlistint_t *head)
 {
-	d_linked_t *temp;
+	dlistint_t *temp;
 
 	while (head)
 	{

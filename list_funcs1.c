@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * d_linked_len - returns the number of nodes in a doubly linked list
+ * dlistint_len - returns the number of nodes in a doubly linked list
  * @h: pointer to the list
  *
  * Return: number of nodes
  */
-size_t d_linked_len(const d_linked_t *h)
+size_t dlistint_len(const dlistint_t *h)
 {
 	size_t nodes = 0;
 
@@ -23,20 +23,20 @@ size_t d_linked_len(const d_linked_t *h)
 }
 
 /**
- * add_d_node - adds a new node at the beginning of a doubly linked list
+ * add_dnodeint - adds a new node at the beginning of a doubly linked list
  * @head: double pointer to the list
  * @n: data to insert in the new node
  *
  * Return: the address of the new element, or NULL if it failed
  */
-d_linked_t *add_d_node(d_linked_t **head, const int n)
+dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	d_linked_t *new;
+	dlistint_t *new;
 
 	if (!head)
 		return (NULL);
 
-	new = malloc(sizeof(d_linked_t));
+	new = malloc(sizeof(dlistint_t));
 	if (!new)
 		return (NULL);
 
@@ -54,12 +54,12 @@ d_linked_t *add_d_node(d_linked_t **head, const int n)
 }
 
 /**
- * print_d_linked - prints a doubly linked list
+ * print_dlistint - prints a doubly linked list
  * @h: pointer to the list
  *
  * Return: number of nodes in the list
  */
-size_t print_d_linked(const d_linked_t *h)
+size_t print_dlistint(const dlistint_t *h)
 {
 	size_t nodes = 0;
 
@@ -77,16 +77,16 @@ size_t print_d_linked(const d_linked_t *h)
 }
 
 /**
- * delete_d_node_index - deltes a node in a doubly linked list
+ * delete_dnodeint_at_index - deltes a node in a doubly linked list
  * at a given index
  * @head: double pointer to the list
  * @index: index of the node to delete
  *
  * Return: 1 on success, -1 on failure
  */
-int delete_d_node_index(d_linked_t **head, unsigned int index)
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	d_linked_t *temp = *head;
+	dlistint_t *temp = *head;
 	unsigned int i = 0;
 
 	if (!index)
@@ -116,13 +116,13 @@ int delete_d_node_index(d_linked_t **head, unsigned int index)
 }
 
 /**
- * get_d_node_nth_index - gets the nth node of a doubly linked list
+ * get_dnodeint_at_index - gets the nth node of a doubly linked list
  * @head: pointer to the list
  * @index: index of the node to return
  *
  * Return: address of the node, or if it does not exist, NULL
  */
-d_linked_t *get_d_node_nth_index(d_linked_t *head, unsigned int index)
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
 	unsigned int i = 0;
 

@@ -2,31 +2,31 @@
 #include "lists.h"
 
 /**
- * get_functions - selects the right function
+ * get_func - selects the right function
  * @parsed: line from the bytecode file passed to main
  *
  * Return: pointer to the selected function, or NULL on failure
  */
-void (*get_functions(char **parsed))(stack_t **, unsigned int)
+void (*get_func(char **parsed))(stack_t **, unsigned int)
 {
 	instruction_t func_arr[] = {
-		{"push", push_op},
-		{"pall", pall_op},
-		{"pint", pint_op},
-		{"pop", pop_op},
-		{"swap", swap_op},
-		{"add", add_op},
-		{"nop", nop_op},
-		{"sub", sub_op},
-		{"div", div_op},
-		{"mul", mul_op},
-		{"mod", mod_op},
-		{"pchar", pchar_op},
-		{"pstr", pstr_op},
-		{"rotl", rotl_op},
-		{"rotr", rotr_op},
-		{"stack", stack_op},
-		{"queue", queue_op},
+		{"push", push_handler},
+		{"pall", pall_handler},
+		{"pint", pint_handler},
+		{"pop", pop_handler},
+		{"swap", swap_handler},
+		{"add", add_handler},
+		{"nop", nop_handler},
+		{"sub", sub_handler},
+		{"div", div_handler},
+		{"mul", mul_handler},
+		{"mod", mod_handler},
+		{"pchar", pchar_handler},
+		{"pstr", pstr_handler},
+		{"rotl", rotl_handler},
+		{"rotr", rotr_handler},
+		{"stack", stack_handler},
+		{"queue", queue_handler},
 		{NULL, NULL}
 	};
 
@@ -43,11 +43,11 @@ void (*get_functions(char **parsed))(stack_t **, unsigned int)
 }
 
 /**
- * push_op - handles the push instruction
+ * push_handler - handles the push instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void push_op(stack_t **stack, unsigned int line_number)
+void push_handler(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 	int num = 0, i;
@@ -71,9 +71,9 @@ void push_op(stack_t **stack, unsigned int line_number)
 	num = atoi(data.words[1]);
 
 	if (data.qflag == 0)
-		new = add_d_node(stack, num);
+		new = add_dnodeint(stack, num);
 	else if (data.qflag == 1)
-		new = add_d_node_end(stack, num);
+		new = add_dnodeint_end(stack, num);
 	if (!new)
 	{
 		dprintf(STDERR_FILENO, MALLOC_FAIL);
@@ -83,13 +83,13 @@ void push_op(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pall_op - handles the pall instruction
+ * pall_handler - handles the pall instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void pall_op(stack_t **stack, unsigned int line_number)
+void pall_handler(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 	if (*stack)
-		print_d_linked(*stack);
+		print_dlistint(*stack);
 }

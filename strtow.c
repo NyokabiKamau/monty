@@ -28,13 +28,13 @@ int count_word(char *s)
 	return (w);
 }
 /**
- * **split_str - splits a string into words
+ * **strtow - splits a string into words
  * @str: string to split
  *
  * Return: pointer to an array of strings (Success)
  * or NULL (Error)
  */
-char **split_str(char *str)
+char **strtow(char *str)
 {
 	char **matrix, *tmp;
 	int i, k = 0, len = 0, words, c = 0, start, end;
@@ -76,10 +76,10 @@ char **split_str(char *str)
 }
 
 /**
- * free_array_str - frees arrays of strings
+ * free_everything - frees arrays of strings
  * @args: array of strings to free
  */
-void free_array_str(char **args)
+void free_everything(char **args)
 {
 	int i;
 

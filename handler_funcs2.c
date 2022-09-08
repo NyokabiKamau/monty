@@ -2,18 +2,18 @@
 #include "lists.h"
 
 /**
- * sub_op - handles the sub instruction
+ * sub_handler - handles the sub instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void sub_op(stack_t **stack, unsigned int line_number)
+void sub_handler(stack_t **stack, unsigned int line_number)
 {
 	int sub = 0;
 	stack_t *node = NULL;
-	stack_t *node_0 = get_d_node_index(*stack, 0);
-	stack_t *node_1 = get_d_node_index(*stack, 1);
+	stack_t *node_0 = get_dnodeint_at_index(*stack, 0);
+	stack_t *node_1 = get_dnodeint_at_index(*stack, 1);
 
-	if (d_linked_len(*stack) < 2)
+	if (dlistint_len(*stack) < 2)
 	{
 		dprintf(STDERR_FILENO, SUB_FAIL, line_number);
 		free_all(1);
@@ -21,9 +21,9 @@ void sub_op(stack_t **stack, unsigned int line_number)
 	}
 
 	sub = node_1->n - node_0->n;
-	delete_d_node_index(stack, 0);
-	delete_d_node_index(stack, 0);
-	node = add_d_node(stack, sub);
+	delete_dnodeint_at_index(stack, 0);
+	delete_dnodeint_at_index(stack, 0);
+	node = add_dnodeint(stack, sub);
 	if (!node)
 	{
 		dprintf(STDERR_FILENO, MALLOC_FAIL);
@@ -33,18 +33,18 @@ void sub_op(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div_op - handles the div instruction
+ * div_handler - handles the div instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void div_op(stack_t **stack, unsigned int line_number)
+void div_handler(stack_t **stack, unsigned int line_number)
 {
 	int div = 0;
 	stack_t *node = NULL;
-	stack_t *node_0 = get_d_node_index(*stack, 0);
-	stack_t *node_1 = get_d_node_index(*stack, 1);
+	stack_t *node_0 = get_dnodeint_at_index(*stack, 0);
+	stack_t *node_1 = get_dnodeint_at_index(*stack, 1);
 
-	if (d_linked_len(*stack) < 2)
+	if (dlistint_len(*stack) < 2)
 	{
 		dprintf(STDERR_FILENO, DIV_FAIL, line_number);
 		free_all(1);
@@ -59,9 +59,9 @@ void div_op(stack_t **stack, unsigned int line_number)
 	}
 
 	div = node_1->n / node_0->n;
-	delete_d_node_index(stack, 0);
-	delete_d_node_index(stack, 0);
-	node = add_d_node(stack, div);
+	delete_dnodeint_at_index(stack, 0);
+	delete_dnodeint_at_index(stack, 0);
+	node = add_dnodeint(stack, div);
 	if (!node)
 	{
 		dprintf(STDERR_FILENO, MALLOC_FAIL);
@@ -71,18 +71,18 @@ void div_op(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mul_op - handles the mul instruction
+ * mul_handler - handles the mul instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void mul_op(stack_t **stack, unsigned int line_number)
+void mul_handler(stack_t **stack, unsigned int line_number)
 {
 	int mul = 0;
 	stack_t *node = NULL;
-	stack_t *node_0 = get_d_node_index(*stack, 0);
-	stack_t *node_1 = get_d_node_index(*stack, 1);
+	stack_t *node_0 = get_dnodeint_at_index(*stack, 0);
+	stack_t *node_1 = get_dnodeint_at_index(*stack, 1);
 
-	if (d_linked_len(*stack) < 2)
+	if (dlistint_len(*stack) < 2)
 	{
 		dprintf(STDERR_FILENO, MUL_FAIL, line_number);
 		free_all(1);
@@ -90,9 +90,9 @@ void mul_op(stack_t **stack, unsigned int line_number)
 	}
 
 	mul = node_1->n * node_0->n;
-	delete_d_node_index(stack, 0);
-	delete_d_node_index(stack, 0);
-	node = add_d_node(stack, mul);
+	delete_dnodeint_at_index(stack, 0);
+	delete_dnodeint_at_index(stack, 0);
+	node = add_dnodeint(stack, mul);
 	if (!node)
 	{
 		dprintf(STDERR_FILENO, MALLOC_FAIL);
@@ -102,18 +102,18 @@ void mul_op(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mod_op - handles the mod instruction
+ * mod_handler - handles the mod instruction
  * @stack: double pointer to the stack to push to
  * @line_number: number of the line in the file
  */
-void mod_op(stack_t **stack, unsigned int line_number)
+void mod_handler(stack_t **stack, unsigned int line_number)
 {
 	int mod = 0;
 	stack_t *node = NULL;
-	stack_t *node_0 = get_d_node_index(*stack, 0);
-	stack_t *node_1 = get_d_node_index(*stack, 1);
+	stack_t *node_0 = get_dnodeint_at_index(*stack, 0);
+	stack_t *node_1 = get_dnodeint_at_index(*stack, 1);
 
-	if (d_linked_len(*stack) < 2)
+	if (dlistint_len(*stack) < 2)
 	{
 		dprintf(STDERR_FILENO, MOD_FAIL, line_number);
 		free_all(1);
@@ -128,9 +128,9 @@ void mod_op(stack_t **stack, unsigned int line_number)
 	}
 
 	mod = node_1->n % node_0->n;
-	delete_d_node_index(stack, 0);
-	delete_d_node_index(stack, 0);
-	node = add_d_node(stack, mod);
+	delete_dnodeint_at_index(stack, 0);
+	delete_dnodeint_at_index(stack, 0);
+	node = add_dnodeint(stack, mod);
 	if (!node)
 	{
 		dprintf(STDERR_FILENO, MALLOC_FAIL);

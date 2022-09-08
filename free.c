@@ -11,7 +11,7 @@ void free_all(int all)
 	{
 		free(data.line);
 		data.line = NULL;
-		free_array_str(data.words);
+		free_everything(data.words);
 		data.words = NULL;
 	}
 
@@ -19,7 +19,7 @@ void free_all(int all)
 	{
 		if (data.stack)
 		{
-			free_d_linked(data.stack);
+			free_dlistint(data.stack);
 			data.stack = NULL;
 		}
 		if (data.fptr)
